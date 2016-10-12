@@ -2,12 +2,22 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.user.notesapp">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <meta-data
+            android:name="com.parse.APPLICATION_ID"
+            android:value="5PtKv9Sn3b0auLerWa8omfcPfnGfDQHkFsbI6V1z" />
+        <meta-data
+            android:name="com.parse.CLIENT_KEY"
+            android:value="gA0NXcQjqR1IpzXuA9T5Tumz1raIXHG8NOECdx2e" />
+
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
@@ -20,5 +30,7 @@
         </activity>
         <activity android:name=".EditActivity"></activity>
     </application>
+
+
 
 </manifest>

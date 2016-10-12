@@ -7,7 +7,7 @@ import android.widget.EditText;
 
 public class EditActivity extends AppCompatActivity {
 
-    private LocalDataService dataService;
+    private ParseDataService dataService;
     private String fileName;
 
     private EditText editText;
@@ -19,7 +19,7 @@ public class EditActivity extends AppCompatActivity {
         setContentView(R.layout.activity_edit);
 
         this.fileName = getIntent().getExtras().getString("FileName");
-        this.dataService = new LocalDataService(this);
+        this.dataService = new ParseDataService();
 
         this.editText = (EditText)findViewById(R.id.editText);
         this.editText.setText(dataService.loadNote(fileName));

@@ -14,13 +14,18 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.GridView;
 
+import com.parse.Parse;
+
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
+    private final String CLIENT_KEY = "gA0NXcQjqR1IpzXuA9T5Tumz1raIXHG8NOECdx2e";
+    private final String APP_ID = "5PtKv9Sn3b0auLerWa8omfcPfnGfDQHkFsbI6V1z";
+
     private GridView gridView;
-    private LocalDataService dataService;
+    private ParseDataService dataService;
 
     private ArrayList<String> notes;
     private ArrayList<String> fileNames;
@@ -33,7 +38,9 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        dataService = new LocalDataService(this);
+        initParse();
+
+        dataService = new ParseDataService();
         notes = new ArrayList<>();
         fileNames = new ArrayList<>();
 
@@ -74,6 +81,14 @@ public class MainActivity extends AppCompatActivity {
         });
 
         new LoadNotesTask().execute();
+    }
+
+    private void initParse()
+    {
+        Parse.initialize(new Parse.Configuration.Builder(this)
+                .applicationId(APP_ID)
+                .clientKey(CLIENT_KEY)
+                .build());
     }
 
     @Override
